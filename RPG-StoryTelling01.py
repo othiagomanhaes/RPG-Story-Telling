@@ -1,11 +1,11 @@
 import time
-"""print('Olá, Bravo Aventureiro. Este é o começo da tua jornada nesta saga épica.')
+print('Olá, Bravo Aventureiro. Este é o começo da tua jornada nesta saga épica.')
 time.sleep(2)
 print('Iremos desbravar locais hostis e inóspitos, lutaremos contra criaturas terríveis e crueis.')
 time.sleep(2)
 print('Desvendaremos mistérios profundos e se sobrevivermos a tudo isso, grandes recompensas nos aguardam.')
 time.sleep(2)
-print('')"""
+print('')
 
 classe = ''
 while 'mago' != classe !='cavaleiro':
