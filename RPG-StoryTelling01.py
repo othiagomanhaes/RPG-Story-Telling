@@ -4,9 +4,9 @@ life = 45
 
 print('Olá, Bravo Aventureiro. Este é o começo da tua jornada nesta saga épica.')
 time.sleep(2)
-print('Iremos desbravar locais hostis e inóspitos, lutaremos contra criaturas terríveis e crueis.')
+print('Iremos desbravar locais hostis e inóspitos, lutaremos contra criaturas terríveis e cruéis.')
 time.sleep(2)
-print('Desvendaremos mistérios profundos e se sobrevivermos a tudo isso, grandes recompensas nos aguardam.')
+print('Desvendaremos mistérios profundos e, se sobrevivermos a tudo isso, grandes recompensas nos aguardam.')
 time.sleep(2)
 print('')
 
@@ -36,8 +36,8 @@ print('')
 time.sleep(1.5)
 print("""Fostan é um rei muito astuto e queria se assegurar de que Garfenir estava enviando alguém 
       de qualidade para atender o seu chamado e resolveu montar uma armadilha para avaliar suas
-      habilidades. Quando você estava em sua carroagem na estrada para o castelo de Ravendor,
-      você foi surpreendido por duas criaturas no meio do caminho que pararam tua carroagem e 
+      habilidades. Quando você estava em sua carruagem na estrada para o castelo de Ravendor,
+      você foi surpreendido por duas criaturas no meio do caminho que pararam tua carruagem e 
       começaram a esbravejar algo estranho.""")
 print('')
 time.sleep(2)
@@ -82,7 +82,7 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
         print('=' * 25)
         print(f'Sua vida: {life}hp.')
         print(f'Vida do Goblin1: {gob1Life}hp.')
-        print(f'Vida do Goblin1: {gob2Life}hp.')
+        print(f'Vida do Goblin2: {gob2Life}hp.')
         print('=' * 25)
         time.sleep(1.5)
         print('')
@@ -95,7 +95,7 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
             print('=' * 25)
             print(f'Sua vida: {life}hp.')
             print(f'Vida do Goblin1: {gob1Life}hp.')
-            print(f'Vida do Goblin1: {gob2Life}hp.')
+            print(f'Vida do Goblin2: {gob2Life}hp.')
             print('=' * 25)
 
         time.sleep(2)
@@ -109,7 +109,7 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
             print('=' * 25)
             print(f'Sua vida: {life}hp.')
             print(f'Vida do Goblin1: {gob1Life}hp.')
-            print(f'Vida do Goblin1: {gob2Life}hp.')
+            print(f'Vida do Goblin2: {gob2Life}hp.')
             print('=' * 25)
 
         ataques: int = 0
@@ -188,4 +188,4 @@ elif (30 > life > 15):
 diante de meros goblins. Vamos! Você precisa se recuperar para se encontrar com o rei.""")
 elif (15 > life > 1):
     print(f"""Rápido! Você precisa de cuidados médicos com urgência! O grande {nome} quase 
-morreu pelas mãos de pequenos goblins. Talvez você não seja tão bom como sua fama tem dito por aí.""")
+morreu pelcas mãos de pequenos goblins. Talvez você não seja tão bom como sua fama tem dito por aí.""")
