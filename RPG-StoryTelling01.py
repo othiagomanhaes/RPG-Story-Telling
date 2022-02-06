@@ -1,5 +1,16 @@
+#proposta de Jogo de RPG Story-Telly
 import time
 import random
+
+def parcialVidas():
+    print('=' * 25)
+    print(f'Sua vida: {life}hp.')
+    print(f'Vida do Goblin1: {gob1Life}hp.')
+    print(f'Vida do Goblin2: {gob2Life}hp.')
+    print('=' * 25)
+    time.sleep(1.5)
+    print('')
+
 life = 45
 
 print('Olá, Bravo Aventureiro. Este é o começo da tua jornada nesta saga épica.')
@@ -52,13 +63,7 @@ ataques: int = 0
 inimigo = 0
 
 if luta1 == 'lutar':
-    print('=' * 25)
-    print(f'Sua vida: {life}hp.')
-    print(f'Vida do Goblin1: {gob1Life}hp.')
-    print(f'Vida do Goblin1: {gob2Life}hp.')
-    print('=' * 25)
-    print('')
-    time.sleep(2)
+    parcialVidas()
     print('=' * 75)
     print('Lista de ataques: [1] Bola de fogo , [2] Chuva de raios, [3] Névoa venenosa')
     print('=' * 75)
@@ -67,9 +72,10 @@ print('')
 while (ataques != 1) and (ataques != 2) and (ataques != 3):
     ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
 time.sleep(1.5)
-while (inimigo != 1) and (inimigo != 2):
-    inimigo = int(input('O ataque será no Goblin1 ou Goblin2? [1]/[2]: '))
-print('')
+if ataques == 1:
+    while (inimigo != 1) and (inimigo != 2):
+        inimigo = int(input('O ataque será no Goblin1 ou Goblin2? [1]/[2]: '))
+    print('')
 
 while (life > 0) and (gob1Life > 0 or gob2Life > 0):
     if ataques == 1 and inimigo == 1:
@@ -79,24 +85,14 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
         print('')
         print(f'Seu ataque causou um dano de {fireball}hp naquele goblin.')
         gob1Life = gob1Life - fireball
-        print('=' * 25)
-        print(f'Sua vida: {life}hp.')
-        print(f'Vida do Goblin1: {gob1Life}hp.')
-        print(f'Vida do Goblin2: {gob2Life}hp.')
-        print('=' * 25)
-        time.sleep(1.5)
-        print('')
+        parcialVidas()
 
         if (gob1Life > 0):
             print('=====O turno do Goblin1=====')
             atakgob1 = random.randint(0, 3)
             life = life - atakgob1
             print(f'O ataque do Goblin1 causou {atakgob1} de dano.')
-            print('=' * 25)
-            print(f'Sua vida: {life}hp.')
-            print(f'Vida do Goblin1: {gob1Life}hp.')
-            print(f'Vida do Goblin2: {gob2Life}hp.')
-            print('=' * 25)
+            parcialVidas()
 
         time.sleep(2)
         print('')
@@ -106,11 +102,7 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
             atakgob2 = random.randint(0, 3)
             life = life - atakgob2
             print(f'O ataque do Goblin1 causou {atakgob2} de dano.')
-            print('=' * 25)
-            print(f'Sua vida: {life}hp.')
-            print(f'Vida do Goblin1: {gob1Life}hp.')
-            print(f'Vida do Goblin2: {gob2Life}hp.')
-            print('=' * 25)
+            parcialVidas()
 
         ataques: int = 0
         inimigo: int = 0
@@ -129,24 +121,14 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
         print('')
         print(f'Seu ataque causou um dano de {fireball}hp naquele goblin.')
         gob2Life = gob2Life - fireball
-        print('=' * 25)
-        print(f'Sua vida: {life}hp.')
-        print(f'Vida do Goblin1: {gob1Life}hp.')
-        print(f'Vida do Goblin1: {gob2Life}hp.')
-        print('=' * 25)
-        time.sleep(1.5)
-        print('')
+        parcialVidas()
 
         if (gob1Life > 0):
             print('=====O turno do Goblin1=====')
             atakgob1 = random.randint(0, 3)
             life = life - atakgob1
             print(f'O ataque do Goblin1 causou {atakgob1} de dano.')
-            print('=' * 25)
-            print(f'Sua vida: {life}hp.')
-            print(f'Vida do Goblin1: {gob1Life}hp.')
-            print(f'Vida do Goblin1: {gob2Life}hp.')
-            print('=' * 25)
+            parcialVidas()
 
         time.sleep(2)
         print('')
@@ -156,11 +138,7 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
             atakgob2 = random.randint(0, 3)
             life = life - atakgob2
             print(f'O ataque do Goblin2 causou {atakgob2} de dano.')
-            print('=' * 25)
-            print(f'Sua vida: {life}hp.')
-            print(f'Vida do Goblin1: {gob1Life}hp.')
-            print(f'Vida do Goblin1: {gob2Life}hp.')
-            print('=' * 25)
+            parcialVidas()
 
         ataques: int = 0
         inimigo: int = 0
@@ -172,9 +150,83 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
             while (inimigo != 1) and (inimigo != 2):
                 inimigo = int(input('O ataque será no Goblin1 ou Goblin2? [1]/[2]: '))
 
-    # elif ataques == 2:
+    elif ataques == 2:
+        print("""Diante dessa situação você não pensou duas vezes, evocou as forças da natureza a seu favor e
+              atraiu uma mística nuvem negra na direção daqueles goblins e houve uma tempestade de raios sobre eles.""")
 
-    # elif ataques == 3:
+        thunderstorm = random.randint(1, 7)
+        print('')
+        print(f'Seu ataque causou um dano de {thunderstorm}hp em cada goblin.')
+        gob1Life = gob1Life - thunderstorm
+        gob2Life = gob2Life - thunderstorm
+        parcialVidas()
+
+        if (gob1Life > 0):
+            print('=====O turno do Goblin1=====')
+            atakgob1 = random.randint(0, 3)
+            life = life - atakgob1
+            print(f'O ataque do Goblin1 causou {atakgob1} de dano.')
+            parcialVidas()
+
+        if (gob2Life > 0):
+            print('=====O turno do Goblin2=====')
+            atakgob2 = random.randint(0, 3)
+            life = life - atakgob2
+            print(f'O ataque do Goblin2 causou {atakgob2} de dano.')
+            parcialVidas()
+
+        ataques: int = 0
+        inimigo: int = 0
+
+        if (gob1Life > 0) or (gob2Life > 0):
+            while (ataques != 1) and (ataques != 2) and (ataques != 3):
+                ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
+            time.sleep(1.5)
+        if ataques == 1:
+            while (inimigo != 1) and (inimigo != 2):
+                inimigo = int(input('O ataque será no Goblin1 ou Goblin2? [1]/[2]: '))
+
+
+    elif ataques == 3:
+        print("""Ao analisar rapidamente a situação você usou a névoa do ambiente para disfarçar 
+        seu ataque mortal. Uma névoa venenosa sobe em volta daqueles goblins e os envenena.""")
+        poisoncloud = random.randint(1, 5)
+        print(f"""Seu ataque causou um dano de {poisoncloud}hp em cada goblin.""")
+        gob1Life = gob1Life - poisoncloud
+        gob2Life = gob2Life - poisoncloud
+        poisoneffect = random.randint(1,2)
+        gob1Life = gob1Life - poisoneffect
+        gob2Life = gob2Life - poisoneffect
+        print('')
+        print(f"""A névoa realmente infectou aqueles goblins. Eles sofreram mais um dano de {poisoneffect}hp por efeito do veneno.""")
+        parcialVidas()
+
+        if (gob1Life > 0):
+            print('=====O turno do Goblin1=====')
+            atakgob1 = random.randint(0, 3)
+            life = life - atakgob1
+            print(f'O ataque do Goblin1 causou {atakgob1} de dano.')
+            parcialVidas()
+
+        if (gob2Life > 0):
+            print('=====O turno do Goblin2=====')
+            atakgob2 = random.randint(0, 3)
+            life = life - atakgob2
+            print(f'O ataque do Goblin2 causou {atakgob2} de dano.')
+            parcialVidas()
+
+        ataques: int = 0
+        inimigo: int = 0
+
+        if (gob1Life > 0) or (gob2Life > 0):
+            while (ataques != 1) and (ataques != 2) and (ataques != 3):
+                ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
+            time.sleep(1.5)
+        if ataques == 1:
+            while (inimigo != 1) and (inimigo != 2):
+                inimigo = int(input('O ataque será no Goblin1 ou Goblin2? [1]/[2]: '))
+
+
 print('')
 print('='*80)
 if (life > 38):
