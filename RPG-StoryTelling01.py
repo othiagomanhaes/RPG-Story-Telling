@@ -1,6 +1,7 @@
 #proposta de Jogo de RPG Story-Telly
 import time
 import random
+import sys
 
 def parcialVidas():
     print('=' * 25)
@@ -11,13 +12,18 @@ def parcialVidas():
     time.sleep(1.5)
     print('')
 
+def printLbL(texto):
+    for c in texto:
+        print(c, end='')
+        sys.stdout.flush()
+        time.sleep(0.03)
 life = 45
 
-print('Olá, Bravo Aventureiro. Este é o começo da tua jornada nesta saga épica.')
+printLbL('Olá, Bravo Aventureiro. Este é o começo da tua jornada nesta saga épica.\n')
 time.sleep(2)
-print('Iremos desbravar locais hostis e inóspitos, lutaremos contra criaturas terríveis e cruéis.')
+printLbL('Iremos desbravar locais hostis e inóspitos, lutaremos contra criaturas terríveis e cruéis.\n')
 time.sleep(2)
-print('Desvendaremos mistérios profundos e, se sobrevivermos a tudo isso, grandes recompensas nos aguardam.')
+printLbL('Desvendaremos mistérios profundos e, se sobrevivermos a tudo isso, grandes recompensas nos aguardam.\n')
 time.sleep(2)
 print('')
 
@@ -40,16 +46,16 @@ print(f'Excelente, {nome}! nossa aventura vai começar agora! ')
 print('='*100)
 print('')
 time.sleep(1.5)
-print("""Após se destacar na antiga e mais respeitada fraternidade de magos do norte de Ravendor,
-      a fraternidade Garfenir, você foi enviado como o mago mais apto para atender o chamado do rei de
-      Ravendor, Fostan.""")
+printLbL("""Após se destacar na antiga e mais respeitada fraternidade de magos do norte de Ravendor,\n
+      a fraternidade Garfenir, você foi enviado como o mago mais apto para atender o chamado do rei de\n
+      Ravendor, Fostan.\n""")
 print('')
 time.sleep(1.5)
-print("""Fostan é um rei muito astuto e queria se assegurar de que Garfenir estava enviando alguém 
-      de qualidade para atender o seu chamado e resolveu montar uma armadilha para avaliar suas
-      habilidades. Quando você estava em sua carruagem na estrada para o castelo de Ravendor,
-      você foi surpreendido por duas criaturas no meio do caminho que pararam tua carruagem e 
-      começaram a esbravejar algo estranho.""")
+printLbL("""Fostan é um rei muito astuto e queria se assegurar de que Garfenir estava enviando alguém\n 
+      de qualidade para atender o seu chamado e resolveu montar uma armadilha para avaliar suas\n
+      habilidades. Quando você estava em sua carruagem na estrada para o castelo de Ravendor,\n
+      você foi surpreendido por duas criaturas no meio do caminho que pararam tua carruagem e\n 
+      começaram a esbravejar algo estranho.\n""")
 print('')
 time.sleep(2)
 
@@ -79,8 +85,8 @@ if ataques == 1:
 
 while (life > 0) and (gob1Life > 0 or gob2Life > 0):
     if ataques == 1 and inimigo == 1:
-        print("""Você concentrou sua energia com um misto de raiva por essa desagradável surpresa e
-        disparou uma poderosa bola de fogo na direção do Goblin1.""")
+        printLbL("""Você concentrou sua energia com um misto de raiva por essa desagradável surpresa e\n
+        disparou uma poderosa bola de fogo na direção do Goblin1.\n""")
         fireball = random.randint(1, 10)
         print('')
         print(f'Seu ataque causou um dano de {fireball}hp naquele goblin.')
@@ -115,8 +121,8 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
                 inimigo = int(input('O ataque será no Goblin1 ou Goblin2? [1]/[2]: '))
 
     elif ataques == 1 and inimigo == 2:
-        print("""Você concentrou sua energia com um misto de raiva por essa desagradável surpresa e
-                disparou uma poderosa bola de fogo na direção do Goblin2.""")
+        printLbL("""Você concentrou sua energia com um misto de raiva por essa desagradável surpresa e\n
+                disparou uma poderosa bola de fogo na direção do Goblin2.\n""")
         fireball = random.randint(1, 10)
         print('')
         print(f'Seu ataque causou um dano de {fireball}hp naquele goblin.')
@@ -151,8 +157,8 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
                 inimigo = int(input('O ataque será no Goblin1 ou Goblin2? [1]/[2]: '))
 
     elif ataques == 2:
-        print("""Diante dessa situação você não pensou duas vezes, evocou as forças da natureza a seu favor e
-              atraiu uma mística nuvem negra na direção daqueles goblins e houve uma tempestade de raios sobre eles.""")
+        printLbL("""Diante dessa situação você não pensou duas vezes, evocou as forças da natureza a seu favor e\n
+              atraiu uma mística nuvem negra na direção daqueles goblins e houve uma tempestade de raios sobre eles.\n""")
 
         thunderstorm = random.randint(1, 7)
         print('')
@@ -188,8 +194,8 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
 
 
     elif ataques == 3:
-        print("""Ao analisar rapidamente a situação você usou a névoa do ambiente para disfarçar 
-        seu ataque mortal. Uma névoa venenosa sobe em volta daqueles goblins e os envenena.""")
+        printLbL("""Ao analisar rapidamente a situação você usou a névoa do ambiente para disfarçar\n 
+        seu ataque mortal. Uma névoa venenosa sobe em volta daqueles goblins e os envenena.\n""")
         poisoncloud = random.randint(1, 5)
         print(f"""Seu ataque causou um dano de {poisoncloud}hp em cada goblin.""")
         gob1Life = gob1Life - poisoncloud
@@ -198,7 +204,7 @@ while (life > 0) and (gob1Life > 0 or gob2Life > 0):
         gob1Life = gob1Life - poisoneffect
         gob2Life = gob2Life - poisoneffect
         print('')
-        print(f"""A névoa realmente infectou aqueles goblins. Eles sofreram mais um dano de {poisoneffect}hp por efeito do veneno.""")
+        printLbL(f"""A névoa realmente infectou aqueles goblins. Eles sofreram mais um dano de {poisoneffect}hp por efeito do veneno.\n""")
         parcialVidas()
 
         if (gob1Life > 0):
