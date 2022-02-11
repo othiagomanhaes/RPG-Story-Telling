@@ -18,7 +18,7 @@ def printLbL(texto):
         print(c, end='')
         sys.stdout.flush()
         time.sleep(0.03)
-life = 45
+
 
 printLbL('Olá, Bravo Aventureiro. Este é o começo da tua jornada nesta saga épica.\n')
 time.sleep(2)
@@ -66,6 +66,7 @@ if classe == 'mago':
                 mas você teme que elas sejam apenas uma isca para algo pior.
                 O que você vai fazer? Lutar/Fugir: """).strip().lower()
 
+    life = 45
     gob1Life: int = 10
     gob2Life: int = 10
     ataques: int = 0
@@ -263,6 +264,7 @@ if classe == 'cavaleiro':
             que hoje pertence a Fostan.
             Porém, Fostan não acredita totalmente nesta lealdade e convoca {nome} para uma missão especial.
             Algo sigiloso e extremamente arriscado.""")
+    print('')
 
     printLbL("""Ao aceitar a missão para provar sua lealdade ao rei Fostan,
             você foi enviado para a mística floresta de Fulgerit,
@@ -271,4 +273,14 @@ if classe == 'cavaleiro':
 
     luta1 = input(f"""Após entrar a floresta e caminhar por volta de meia hora numa antiga trilha
             que mal se enxerga os sinais dela, {nome} percebeu que estava sendo observado do alto das árvores.
-            Duas criaturas pulam bem na sua frente. E agora, {nome}? Lutar/Fugir: """).strip().lower()
+            Duas criaturas pulam bem na sua frente. 
+            Dois diabretes que se apresentam em sua forma normal e prontos para atacar.
+            E agora, {nome}? Lutar/Fugir: """).strip().lower()
+    print('')
+
+    if luta1 == 'lutar':
+        ataques = input("""Lista de ataques:
+        [1] Espada Longa (1d10)
+        [2] Besta leve (1d8)
+        [3] Rede
+        Sua escolha: """)
