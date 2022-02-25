@@ -13,6 +13,15 @@ def parcialVidas():
     time.sleep(1.5)
     print('')
 
+def parcialVidasCav():
+    print('=' * 25)
+    print(f'Sua vida: {life}hp.')
+    print(f'Vida do Diabrete1: {diablife1}hp.')
+    print(f'Vida do Diabrete2: {diablife2}hp.')
+    print('=' * 25)
+    time.sleep(1.5)
+    print('')
+
 def printLbL(texto):
     for c in texto:
         print(c, end='')
@@ -97,7 +106,7 @@ if classe == 'mago':
             gob1Life = gob1Life - fireball
             parcialVidas()
 
-            if (gob1Life > 0):
+            if gob1Life > 0:
                 print('=====O turno do Goblin1=====')
                 atakgob1 = random.randint(0, 3)
                 life = life - atakgob1
@@ -107,7 +116,7 @@ if classe == 'mago':
             time.sleep(2)
             print('')
 
-            if (gob2Life > 0):
+            if gob2Life > 0:
                 print('=====O turno do Goblin2=====')
                 atakgob2 = random.randint(0, 3)
                 life = life - atakgob2
@@ -220,7 +229,7 @@ if classe == 'mago':
                 print(f'O ataque do Goblin1 causou {atakgob1} de dano.')
                 parcialVidas()
 
-            if (gob2Life > 0):
+            if gob2Life > 0:
                 print('=====O turno do Goblin2=====')
                 atakgob2 = random.randint(0, 3)
                 life = life - atakgob2
@@ -249,38 +258,81 @@ if classe == 'mago':
          Mas você conseguiu, parabéns, {nome}!""")
     elif (30 > life > 15):
         print(f"""INACREDITÁVEL! Que surra você levou! Por pouco o grande {nome} não teria sucumbido
-    diante de meros goblins. Vamos! Você precisa se recuperar para se encontrar com o rei.""")
+    diante de meros goblins. Vamos! Você precisa se recuperar para se encontrar com o rei.\n""")
     elif (15 > life > 1):
         print(f"""Rápido! Você precisa de cuidados médicos com urgência! O grande {nome} quase 
-    morreu pelcas mãos de pequenos goblins. Talvez você não seja tão bom como sua fama tem dito por aí.""")
+    morreu pelcas mãos de pequenos goblins. Talvez você não seja tão bom como sua fama tem dito por aí.\n""")
 
 if classe == 'cavaleiro':
     printLbL(f"""{nome} perdeu seus pais num ataque de tribos bárbaras quando ainda era bebê
             e foi criado por um capitão da guarda do castelo de Ravendor. Cresceu junto aos soldados e
-            jurou que sempre iria proteger o reino destas ameaças.""")
-    print('')
+            jurou que sempre iria proteger o reino destas ameaças.\n""")
+
     time.sleep(1)
     printLbL(f"""{nome} se tornou um excelente cavaleiro, leal e devoto ao trono de Ravendor,
             que hoje pertence a Fostan.
             Porém, Fostan não acredita totalmente nesta lealdade e convoca {nome} para uma missão especial.
-            Algo sigiloso e extremamente arriscado.""")
-    print('')
+            Algo sigiloso e extremamente arriscado.\n""")
 
     printLbL("""Ao aceitar a missão para provar sua lealdade ao rei Fostan,
             você foi enviado para a mística floresta de Fulgerit,
-            onde agora apenas se encontra somente as ruínas desta cidade.""")
-    print('')
+            onde encontra-se apenas as ruínas desta antiga cidade.\n""")
 
     luta1 = input(f"""Após entrar a floresta e caminhar por volta de meia hora numa antiga trilha
             que mal se enxerga os sinais dela, {nome} percebeu que estava sendo observado do alto das árvores.
             Duas criaturas pulam bem na sua frente. 
             Dois diabretes que se apresentam em sua forma normal e prontos para atacar.
-            E agora, {nome}? Lutar/Fugir: """).strip().lower()
-    print('')
+            E agora, {nome}? Lutar/Fugir: \n""").strip().lower()
 
     if luta1 == 'lutar':
-        ataques = input("""Lista de ataques:
+        ataques = int(input("""Lista de ataques:
         [1] Espada Longa (1d10)
         [2] Besta leve (1d8)
-        [3] Rede
-        Sua escolha: """)
+        [3] Rede (prende o inimigo por alguns turnos)
+        Sua escolha: """))
+
+    inimigo = int(input("""Qual diabrete você vai atacar 
+    [1] O de trás 
+    [2] O da frente
+    Sua escolha: """))
+
+    diablife1 = 10
+    diablife2 = 10
+    life = 70
+    while (life > 0) and (diablife1 > 0 or diablife2 > 0):
+        if ataques == 1 and inimigo == 1:
+            longsword = random.randint(1, 10)
+            printLbL(f"""{nome} num ato de coragem e agilidade puxa sua espada longa, gira o corpo 
+            para trás e acerta um golpe no diabrete que ali estava o ameaçando.\n""")
+            diablife1 -= longsword
+
+            print(f"O seu golpe tira {longsword} hitpoints do Diabrete de trás(1).\n")
+            parcialVidasCav()
+
+
+            if diablife1 > 0:
+                print('=====O turno do Diabrete1=====')
+                atakdiab1 = random.randint(0, 3)
+                life = life - atakdiab1
+                print(f'O ataque do Diabrete1 causou {atakdiab1} de dano.')
+                parcialVidasCav()
+
+            if diablife2 > 0:
+                print('=====O turno do Diabrete2=====')
+                atakdiab2 = random.randint(0, 3)
+                life = life - atakdiab2
+                print(f'O ataque do Diabrete2ca causou {atakdiab2} de dano.')
+                parcialVidasCav()
+
+            ataques: int = 0
+            inimigo: int = 0
+
+            if (diablife1 > 0) or (diablife2 > 0):
+                while (ataques != 1) and (ataques != 2) and (ataques != 3):
+                    ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
+                time.sleep(1.5)
+            if ataques == 1:
+                while (inimigo != 1) and (inimigo != 2):
+                    inimigo = int(input('O ataque será no Diabrete1 ou Diabrete2? [1]/[2]: '))
+
+
