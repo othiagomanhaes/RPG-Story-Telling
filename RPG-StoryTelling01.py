@@ -58,16 +58,16 @@ print('')
 time.sleep(1.5)
 
 if classe == 'mago':
-    printLbL("""Após se destacar na antiga e mais respeitada fraternidade de magos do norte de Ravendor,\n
-          a fraternidade Garfenir, você foi enviado como o mago mais apto para atender o chamado do rei de\n
-          Ravendor, Fostan.\n""")
+    printLbL("""Após se destacar na antiga e mais respeitada fraternidade de magos do norte de Ravendor,
+          a fraternidade Garfenir, você foi enviado como o mago mais apto para atender o chamado do rei de
+          Ravendor, Fostan.""")
     print('')
     time.sleep(1.5)
-    printLbL("""Fostan é um rei muito astuto e queria se assegurar de que Garfenir estava enviando alguém\n 
-          de qualidade para atender o seu chamado e resolveu montar uma armadilha para avaliar suas\n
-          habilidades. Quando você estava em sua carruagem na estrada para o castelo de Ravendor,\n
-          você foi surpreendido por duas criaturas no meio do caminho que pararam tua carruagem e\n 
-          começaram a esbravejar algo estranho.\n""")
+    printLbL("""Fostan é um rei muito astuto e queria se assegurar de que Garfenir estava enviando alguém
+          de qualidade para atender o seu chamado e resolveu montar uma armadilha para avaliar suas
+          habilidades. Quando você estava em sua carruagem na estrada para o castelo de Ravendor,
+          você foi surpreendido por duas criaturas no meio do caminho que pararam tua carruagem e
+          começaram a esbravejar algo estranho.""")
     print('')
     time.sleep(2)
 
@@ -282,7 +282,7 @@ if classe == 'cavaleiro':
             que mal se enxerga os sinais dela, {nome} percebeu que estava sendo observado do alto das árvores.
             Duas criaturas pulam bem na sua frente. 
             Dois diabretes que se apresentam em sua forma normal e prontos para atacar.
-            E agora, {nome}? Lutar/Fugir: \n""").strip().lower()
+            E agora, {nome}? Lutar/Fugir: """).strip().lower()
 
     if luta1 == 'lutar':
         ataques = int(input("""Lista de ataques:
@@ -299,7 +299,13 @@ if classe == 'cavaleiro':
     diablife1 = 10
     diablife2 = 10
     life = 70
+    redeTrap1 = redeTrap2 = 0
     while (life > 0) and (diablife1 > 0 or diablife2 > 0):
+        if redeTrap1 > 0:
+            redeTrap1 -= 1
+        if redeTrap2 > 0:
+            redeTrap2 -= 1
+
         if ataques == 1 and inimigo == 1:
             longsword = random.randint(1, 10)
             printLbL(f"""{nome} num ato de coragem e agilidade puxa sua espada longa, gira o corpo 
@@ -309,6 +315,125 @@ if classe == 'cavaleiro':
             print(f"O seu golpe tira {longsword} hitpoints do Diabrete de trás(1).\n")
             parcialVidasCav()
 
+            if diablife1 > 0 and redeTrap1 == 0:
+                print('=====O turno do Diabrete1=====')
+                atakdiab1 = random.randint(0, 3)
+                life = life - atakdiab1
+                print(f'O ataque do Diabrete1 causou {atakdiab1} de dano.')
+                parcialVidasCav()
+            if redeTrap1 > 0:
+                print('O Diabrete1 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            if diablife2 > 0 and redeTrap2 == 0:
+                print('=====O turno do Diabrete2=====')
+                atakdiab2 = random.randint(0, 3)
+                life = life - atakdiab2
+                print(f'O ataque do Diabrete2ca causou {atakdiab2} de dano.')
+                parcialVidasCav()
+            if redeTrap2 > 0:
+                print('O Diabrete2 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            ataques: int = 0
+            inimigo: int = 0
+
+            if (diablife1 > 0) or (diablife2 > 0):
+                while (ataques != 1) and (ataques != 2) and (ataques != 3):
+                    ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
+                time.sleep(1.5)
+            if ataques == 1 or ataques == 2 or ataques == 3:
+                while (inimigo != 1) and (inimigo != 2):
+                    inimigo = int(input('O ataque será no Diabrete1 ou Diabrete2? [1]/[2]: '))
+
+        if ataques == 1 and inimigo == 2:
+            longsword = random.randint(1, 10)
+            printLbL(f"""{nome} num ato de coragem e agilidade puxa sua espada longa, gira o corpo 
+            para trás e acerta um golpe no diabrete que ali estava o ameaçando.\n""")
+            diablife2 -= longsword
+
+            print(f"O seu golpe tira {longsword} hitpoints do Diabrete da frente(2).\n")
+            parcialVidasCav()
+
+            if diablife1 > 0 and redeTrap1 == 0:
+                print('=====O turno do Diabrete1=====')
+                atakdiab1 = random.randint(0, 3)
+                life = life - atakdiab1
+                print(f'O ataque do Diabrete1 causou {atakdiab1} de dano.')
+                parcialVidasCav()
+            if redeTrap1 > 0:
+                print('O Diabrete1 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            if diablife2 > 0 and redeTrap2 == 0:
+                print('=====O turno do Diabrete2=====')
+                atakdiab2 = random.randint(0, 3)
+                life = life - atakdiab2
+                print(f'O ataque do Diabrete2ca causou {atakdiab2} de dano.')
+                parcialVidasCav()
+            if redeTrap2 > 0:
+                print('O Diabrete2 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            ataques: int = 0
+            inimigo: int = 0
+
+            if (diablife1 > 0) or (diablife2 > 0):
+                while (ataques != 1) and (ataques != 2) and (ataques != 3):
+                    ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
+                time.sleep(1.5)
+            if ataques == 1 or ataques == 2 or ataques == 3:
+                while (inimigo != 1) and (inimigo != 2):
+                    inimigo = int(input('O ataque será no Diabrete1 ou Diabrete2? [1]/[2]: '))
+
+        if ataques == 2 and inimigo == 1:
+            bestaLeve = random.randint(1, 8)
+            printLbL(f"""{nome} rapidamente puxa sua besta das costas e dispara um golpe
+            na direção do Diabrete de trás.\n""")
+            diablife1 -= bestaLeve
+
+            print(f"O seu golpe tira {bestaLeve} hitpoints do Diabrete de trás(1).\n")
+            parcialVidasCav()
+
+            if diablife1 > 0 and redeTrap1 == 0:
+                print('=====O turno do Diabrete1=====')
+                atakdiab1 = random.randint(0, 3)
+                life = life - atakdiab1
+                print(f'O ataque do Diabrete1 causou {atakdiab1} de dano.')
+                parcialVidasCav()
+            if redeTrap1 > 0:
+                print('O Diabrete1 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            if diablife2 > 0 and redeTrap2 == 0:
+                print('=====O turno do Diabrete2=====')
+                atakdiab2 = random.randint(0, 3)
+                life = life - atakdiab2
+                print(f'O ataque do Diabrete2ca causou {atakdiab2} de dano.')
+                parcialVidasCav()
+            if redeTrap2 > 0:
+                print('O Diabrete2 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            ataques: int = 0
+            inimigo: int = 0
+
+            if (diablife1 > 0) or (diablife2 > 0):
+                while (ataques != 1) and (ataques != 2) and (ataques != 3):
+                    ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
+                time.sleep(1.5)
+            if ataques == 1 or ataques == 2 or ataques == 3:
+                while (inimigo != 1) and (inimigo != 2):
+                    inimigo = int(input('O ataque será no Diabrete1 ou Diabrete2? [1]/[2]: '))
+
+        if ataques == 2 and inimigo == 2:
+            bestaLeve = random.randint(1, 8)
+            printLbL(f"""{nome} rapidamente puxa sua besta das costas e dispara um golpe
+            na direção do Diabrete de trás.\n""")
+            diablife2 -= bestaLeve
+
+            print(f"O seu golpe tira {bestaLeve} hitpoints do Diabrete de trás(1).\n")
+            parcialVidasCav()
 
             if diablife1 > 0:
                 print('=====O turno do Diabrete1=====')
@@ -331,8 +456,92 @@ if classe == 'cavaleiro':
                 while (ataques != 1) and (ataques != 2) and (ataques != 3):
                     ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
                 time.sleep(1.5)
-            if ataques == 1:
+            if ataques == 1 or ataques == 2 or ataques == 3:
                 while (inimigo != 1) and (inimigo != 2):
                     inimigo = int(input('O ataque será no Diabrete1 ou Diabrete2? [1]/[2]: '))
 
+        if ataques == 3 and inimigo == 1:
+            redeTrap1 = random.randint(0, 2)
+            if redeTrap1 == 0:
+                printLbL(f"""{nome} se deparando com essa situação, lança sua rede para tentar
+            imobilizar o oponente, mas falha miseravelmente.\n""")
 
+            if redeTrap1 in (1, 2):
+                printLbL(f"""{nome} tem a brilhante ideia de prender o adversário com a sua rede.
+            Ao lançar, {nome} cosegue uma bela jogada. 
+            O adversário ficará preso por {redeTrap1} turnos.\n""")
+            print('')
+
+            if diablife1 > 0 and redeTrap1 == 0:
+                print('=====O turno do Diabrete1=====')
+                atakdiab1 = random.randint(0, 3)
+                life = life - atakdiab1
+                print(f'O ataque do Diabrete1 causou {atakdiab1} de dano.')
+                parcialVidasCav()
+            if redeTrap1 > 0:
+                print('O Diabrete1 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            if diablife2 > 0 and redeTrap2 == 0:
+                print('=====O turno do Diabrete2=====')
+                atakdiab2 = random.randint(0, 3)
+                life = life - atakdiab2
+                print(f'O ataque do Diabrete2 causou {atakdiab2} de dano.')
+                parcialVidasCav()
+            if redeTrap2 > 0:
+                print('O Diabrete2 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            ataques: int = 0
+            inimigo: int = 0
+
+            if (diablife1 > 0) or (diablife2 > 0):
+                while (ataques != 1) and (ataques != 2) and (ataques != 3):
+                    ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
+                time.sleep(1.5)
+            if ataques in range(1, 4):
+                while (inimigo != 1) and (inimigo != 2):
+                    inimigo = int(input('O ataque será no Diabrete1 ou Diabrete2? [1]/[2]: '))
+
+        if ataques == 3 and inimigo == 2:
+            redeTrap2 = random.randint(0, 2)
+            if redeTrap2 == 0:
+                printLbL(f"""{nome} se deparando com essa situação, lança sua rede para tentar
+            imobilizar o oponente, mas falha miseravelmente.""")
+
+            if redeTrap2 in (1, 2):
+                printLbL(f"""{nome} tem a brilhante ideia de prender o adversário com a sua rede.
+            Ao lançar, {nome} cosegue uma bela jogada. 
+            O adversário ficará preso por {redeTrap2} turnos.""")
+            print('')
+
+            if diablife1 > 0 and redeTrap1 == 0:
+                print('=====O turno do Diabrete1=====')
+                atakdiab1 = random.randint(0, 3)
+                life = life - atakdiab1
+                print(f'O ataque do Diabrete1 causou {atakdiab1} de dano.')
+                parcialVidasCav()
+            if redeTrap1 > 0:
+                print('O Diabrete1 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            if diablife2 > 0 and redeTrap2 == 0:
+                print('=====O turno do Diabrete2=====')
+                atakdiab2 = random.randint(0, 3)
+                life = life - atakdiab2
+                print(f'O ataque do Diabrete2ca causou {atakdiab2} de dano.')
+                parcialVidasCav()
+            if redeTrap2 > 0:
+                print('O Diabrete2 está todo enrolado na sua rede e não consegue atacar.')
+            print('')
+
+            ataques: int = 0
+            inimigo: int = 0
+
+            if (diablife1 > 0) or (diablife2 > 0):
+                while (ataques != 1) and (ataques != 2) and (ataques != 3):
+                    ataques = int(input('Escolha o seu ataque: [1], [2], [3]: '))
+                time.sleep(1.5)
+            if ataques in range(1, 4):
+                while (inimigo != 1) and (inimigo != 2):
+                    inimigo = int(input('O ataque será no Diabrete1 ou Diabrete2? [1]/[2]: '))
